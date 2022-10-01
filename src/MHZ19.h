@@ -39,13 +39,9 @@ typedef struct measurement {
 class MHZ19
 {
   public:
-	MHZ19();
-	MHZ19(int uart_nr);
-	MHZ19(int pwm);
+	MHZ19(int uart_nr, int pwm_pin);
 	virtual ~MHZ19();
 
-	void begin(int uart_nr);
-	void begin(int pwm);
 	void setAutoCalibration(boolean autocalib);
 	void calibrateZero();
 	void calibrateSpan(int ppm);

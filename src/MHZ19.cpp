@@ -13,31 +13,16 @@
 
 // public
 
-MHZ19::MHZ19()
+MHZ19::MHZ19(int uart_nr, int pwm_pin)
 {
-}
-
-MHZ19::MHZ19(int uart_nr)
-{
-	begin(uart_nr);
-}
-
-MHZ19::MHZ19(int pwm){
-	begin(pwm);
+	_uart_nr = uart_nr;
+	_pwm_pin = pwm_pin;
 }
 
 MHZ19::~MHZ19()
 {
 }
 
-void MHZ19::begin(int uart_nr)
-{
-	_uart_nr = uart_nr;
-}
-
-void MHZ19::begin(int pwm){
-	_pwm_pin = pwm;
-}
 
 void MHZ19::setAutoCalibration(boolean autocalib)
 {
