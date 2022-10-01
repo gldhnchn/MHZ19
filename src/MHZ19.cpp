@@ -137,7 +137,7 @@ int MHZ19::getPpmPwm()
 			ppm = 5000 * (th - 2) / (th + tl - 4);
 			break;
 		}
-		if(millis() - timestamp < 10000)
+		if(millis() - timestamp > 10000)
 		{
 			ppm = -1;
 			break;
