@@ -122,6 +122,7 @@ measurement_t MHZ19::getMeasurement()
 int MHZ19::getPpmPwm()
 {
 	unsigned long th, tl, ppm = 0;
+	unsigned long timestamp = millis();
 
 	do
 	{
@@ -134,6 +135,11 @@ int MHZ19::getPpmPwm()
 			break;
 		case MHZ19_PWM_DATA::CALC_5000_PPM:
 			ppm = 5000 * (th - 2) / (th + tl - 4);
+			break;
+		}
+		if(millis() - timestamp < 10000)
+		{
+			ppm = -1;
 			break;
 		}
 	} while (th == 0);
