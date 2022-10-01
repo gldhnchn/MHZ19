@@ -9,7 +9,6 @@
 #define _MHZ19
 
 #include "Arduino.h"
-#include "SoftwareSerial.h"
 
 enum MHZ19_UART_DATA
 {
@@ -41,11 +40,11 @@ class MHZ19
 {
   public:
 	MHZ19();
-	MHZ19(int rx, int tx);
+	MHZ19(int uart_nr);
 	MHZ19(int pwm);
 	virtual ~MHZ19();
 
-	void begin(int rx, int tx);
+	void begin(int uart_nr);
 	void begin(int pwm);
 	void setAutoCalibration(boolean autocalib);
 	void calibrateZero();
@@ -76,8 +75,7 @@ class MHZ19
 	uint8_t autocalib_off[REQUEST_CNT] = {0xff, 0x01, 0x79, 0x00, 0x00, 0x00, 0x00, 0x00};
 	
 	// Serial Pins
-	int _rx_pin = -1;
-	int _tx_pin = -1;
+	int _uart_nr = -1;
 
 	// Pwm Pin
 	int _pwm_pin;

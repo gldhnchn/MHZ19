@@ -17,9 +17,9 @@ MHZ19::MHZ19()
 {
 }
 
-MHZ19::MHZ19(int rx, int tx)
+MHZ19::MHZ19(int uart_nr)
 {
-	begin(rx, tx);
+	begin(uart_nr);
 }
 
 MHZ19::MHZ19(int pwm){
@@ -30,10 +30,9 @@ MHZ19::~MHZ19()
 {
 }
 
-void MHZ19::begin(int rx, int tx)
+void MHZ19::begin(int uart_nr)
 {
-	_rx_pin = rx;
-	_tx_pin = tx;
+	_uart_nr = uart_nr;
 }
 
 void MHZ19::begin(int pwm){
@@ -86,7 +85,7 @@ void MHZ19::writeCommand(uint8_t cmd[])
 
 void MHZ19::writeCommand(uint8_t cmd[], uint8_t *response)
 {
-	SoftwareSerial mhz19_serial(_rx_pin, _tx_pin);
+	HardwareSerial mhz19_serial(_uart_nr);
 	mhz19_serial.begin(9600);
 	mhz19_serial.write(cmd, REQUEST_CNT);
 	mhz19_serial.write(mhz19_checksum(cmd));
