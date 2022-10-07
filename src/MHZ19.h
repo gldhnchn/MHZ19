@@ -47,7 +47,7 @@ class MHZ19
 	void calibrateSpan(int ppm);
 	int getStatus();
 	measurement_t getMeasurement();
-	int getPpmPwm();
+	int getPpmPwm(unsigned long timeout_in_ms = 10000);
 
 	boolean isWarming();
 

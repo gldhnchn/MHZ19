@@ -119,7 +119,7 @@ measurement_t MHZ19::getMeasurement()
 	return measurement;
 }
 
-int MHZ19::getPpmPwm()
+int MHZ19::getPpmPwm(unsigned long timeout_in_ms)
 {
 	unsigned long th, tl, ppm = 0;
 	unsigned long timestamp = millis();
@@ -137,7 +137,7 @@ int MHZ19::getPpmPwm()
 			ppm = 5000 * (th - 2) / (th + tl - 4);
 			break;
 		}
-		if(millis() - timestamp > 10000)
+		if(millis() - timestamp > timeout)
 		{
 			ppm = -1;
 			break;
