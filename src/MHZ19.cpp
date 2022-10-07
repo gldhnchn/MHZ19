@@ -137,7 +137,7 @@ int MHZ19::getPpmPwm(unsigned long timeout_in_ms)
 			ppm = 5000 * (th - 2) / (th + tl - 4);
 			break;
 		}
-		if(millis() - timestamp > timeout)
+		if(millis() - timestamp > timeout_in_ms)
 		{
 			ppm = -1;
 			break;
