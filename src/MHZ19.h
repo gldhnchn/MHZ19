@@ -48,7 +48,7 @@ class MHZ19
 	int getStatus();
 	measurement_t getMeasurement();
 	int getPpmPwm(unsigned long timeout_in_ms = 10000);
-
+	void setPwmData(MHZ19_PWM_DATA type);
 	boolean isWarming();
 
   protected:
@@ -58,7 +58,6 @@ class MHZ19
   private:
 	uint8_t mhz19_checksum(uint8_t com[]);
 	measurement_t getSerialData();
-	void setPwmData(MHZ19_PWM_DATA type);
 
 	static const int REQUEST_CNT = 8;
 	static const int RESPONSE_CNT = 9;
